@@ -24,9 +24,9 @@ provider "openstack" {
 }
 
 module "server-catalog" {
-  source = "./server-catalog"
-  vm-count = var.vm-count
-  name = var.catalog-name
+  source           = "./server-catalog"
+  vm-count         = var.vm-count
+  name             = var.catalog-name
   containers-count = var.containers-count
 }
 

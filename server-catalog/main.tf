@@ -26,7 +26,7 @@ provider "docker" {
 
 resource "openstack_compute_instance_v2" "inference-server" {
   count           = var.vm-count
-  name            = var.name
+  name            = "${var.name}-${count.index}"
   image_id        = "a3f2106a-84bf-4751-99a3-a4bc0fd234e2"
   flavor_id       = "129c029e-5cc3-4005-8cd3-466fd95bf03c"
   key_pair        = "sunbeam"
@@ -39,6 +39,6 @@ resource "openstack_compute_instance_v2" "inference-server" {
 
 resource "docker_container" "triton" {
   count = var.containers-count
-  name  = var.name
+  name  = "${var.name}-${count.index}"
   image = "nvcr.io/nvidia/tritonserver:24.03-vllm-python-py3"
 }
