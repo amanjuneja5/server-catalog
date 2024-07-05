@@ -41,5 +41,5 @@ resource "docker_container" "triton" {
   count = var.containers-count
   name  = "${var.name}-${count.index}"
   image = "nvcr.io/nvidia/tritonserver:24.03-vllm-python-py3"
-  command = ["sleep 3600"]
+  entrypoint = ["sleep 3600"]
 }
